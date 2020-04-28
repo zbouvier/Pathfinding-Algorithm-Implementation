@@ -12,7 +12,7 @@ class MapVertex
 {
     public:
         bool known;
-        int parent = NULL;
+        int parent = 0;
         vector<int> neighbors;
         int pathCost = 1;
         int id;
@@ -43,15 +43,16 @@ vector<MapVertex> readFile()
         vector<int> ids;
         bool firstNumber = true;
         while (is >> n) {
+
             
-            int parent = NULL;
+            int parent = 0;
             vector<int> neighbors;
             if (n != -1)
             {
                 if (firstNumber)
                 {
                     firstNumber = false;
-                    MapVertex temp = MapVertex(n, NULL, neighbors);
+                    MapVertex temp = MapVertex(n, 0, neighbors);
                     while (is >> n)
                     {
                         if (n == -1)
@@ -129,7 +130,7 @@ int main()
     vector<int> pathFound = findPath(test);
     for (int i = pathFound.size(); i > 0; i--)
     {
-        cout << pathFound[i-1] << endl;
+        cout << pathFound[i-1] << "->";
     }
     cout << "Cost:" << findPathCost(test);
 }
